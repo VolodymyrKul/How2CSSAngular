@@ -1,0 +1,31 @@
+<table class="table table-striped table-bordered w-75 mx-auto mt-4">
+    <thead>
+        <tr>
+            <th></th>
+            <th colspan="3" style="text-align: center;">My achievements</th>
+            <th colspan="3" style="text-align: center;">SearchUser achievements</th>
+        </tr>
+        <tr>
+            <th>Test title</th>
+            <th>Completed/All</th>
+            <th>Correct/All</th>
+            <th>Current mark</th>
+            <th>Completed/All</th>
+            <th>Correct/All</th>
+            <th>Current mark</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let achiev of compareAchievData let in=index">
+            <tr>
+                <td>{{achiev?.trainingTestTitle}}</td>
+                <td>{{achiev?.ownCompletedCount}}</td>
+                <td>{{achiev?.ownCorrectCount}}</td>
+                <td>{{achiev?.ownCurrentMark}}</td>
+                <td>{{achiev?.antCompletedCount}}</td>
+                <td>{{achiev?.antCompletedCount}}</td>
+                <td>{{achiev?.antCurrentMark}}</td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>

@@ -1,0 +1,24 @@
+<table class="table table-striped table-bordered w-75 mx-auto mt-4">
+    <thead>
+        <tr>
+            <th>Test title</th>
+            <th>Completed/All</th>
+            <th>Correct/All</th>
+            <th>Current mark</th>
+            <th>Try number</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let achiev of simpleAchievData let in=index">
+            <tr>
+                <td>{{achiev?.trainingTestTitle}}</td>
+                <td>{{achiev?.completedCount}}</td>
+                <td>{{achiev?.correctCount}}</td>
+                <td>{{achiev?.currentMark}}</td>
+                <td>{{achiev?.tryCount}}</td>
+                <td>{{achiev?.saveDate}}</td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>
