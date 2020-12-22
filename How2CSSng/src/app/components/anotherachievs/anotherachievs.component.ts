@@ -9,6 +9,12 @@ import { AchievementDataServiceService } from '../../services/achievement-data-s
 })
 export class AnotherachievsComponent implements OnInit {
   simpleAchievData: SimpleAchievData[] = [];
+  titleMode: boolean = false;
+  comCountMode: boolean = false;
+  corCountMode: boolean = false;
+  curMarkMode: boolean = false;
+  tryNumMode: boolean = false;
+  saveDateMode: boolean = false;
 
   constructor(private achievementDataService: AchievementDataServiceService) { }
   
@@ -22,4 +28,63 @@ export class AnotherachievsComponent implements OnInit {
     });
   }
 
+  byTitleSort(){
+    if(this.titleMode){
+      this.simpleAchievData.sort((a,b) => (a.trainingTestTitle==undefined || b.trainingTestTitle==undefined) ? 0 : (a.trainingTestTitle > b.trainingTestTitle) ? 1 : (b.trainingTestTitle > a.trainingTestTitle) ? -1 : 0);
+    }
+    else{
+      this.simpleAchievData.sort((a,b) => (a.trainingTestTitle==undefined || b.trainingTestTitle==undefined) ? 0 : (a.trainingTestTitle < b.trainingTestTitle) ? 1 : (b.trainingTestTitle < a.trainingTestTitle) ? -1 : 0);
+    }
+    this.titleMode=!this.titleMode;
+  }
+
+  byComCountSort(){
+    if(this.comCountMode){
+      this.simpleAchievData.sort((a,b) => (a.completedCount==undefined || b.completedCount==undefined) ? 0 : (a.completedCount > b.completedCount) ? 1 : (b.completedCount > a.completedCount) ? -1 : 0);
+    }
+    else{
+      this.simpleAchievData.sort((a,b) => (a.completedCount==undefined || b.completedCount==undefined) ? 0 : (a.completedCount < b.completedCount) ? 1 : (b.completedCount < a.completedCount) ? -1 : 0);
+    }
+    this.comCountMode=!this.comCountMode;
+  }
+
+  byCorCountSort(){
+    if(this.corCountMode){
+      this.simpleAchievData.sort((a,b) => (a.correctCount==undefined || b.correctCount==undefined) ? 0 : (a.correctCount > b.correctCount) ? 1 : (b.correctCount > a.correctCount) ? -1 : 0);
+    }
+    else{
+      this.simpleAchievData.sort((a,b) => (a.correctCount==undefined || b.correctCount==undefined) ? 0 : (a.correctCount < b.correctCount) ? 1 : (b.correctCount < a.correctCount) ? -1 : 0);
+    }
+    this.corCountMode=!this.corCountMode;
+  }
+
+  byCurMarkSort(){
+    if(this.curMarkMode){
+      this.simpleAchievData.sort((a,b) => (a.currentMark==undefined || b.currentMark==undefined) ? 0 : (a.currentMark > b.currentMark) ? 1 : (b.currentMark > a.currentMark) ? -1 : 0);
+    }
+    else{
+      this.simpleAchievData.sort((a,b) => (a.currentMark==undefined || b.currentMark==undefined) ? 0 : (a.currentMark < b.currentMark) ? 1 : (b.currentMark < a.currentMark) ? -1 : 0);
+    }
+    this.curMarkMode=!this.curMarkMode;
+  }
+
+  byTryNumSort(){
+    if(this.tryNumMode){
+      this.simpleAchievData.sort((a,b) => (a.tryCount==undefined || b.tryCount==undefined) ? 0 : (a.tryCount > b.tryCount) ? 1 : (b.tryCount > a.tryCount) ? -1 : 0);
+    }
+    else{
+      this.simpleAchievData.sort((a,b) => (a.tryCount==undefined || b.tryCount==undefined) ? 0 : (a.tryCount < b.tryCount) ? 1 : (b.tryCount < a.tryCount) ? -1 : 0);
+    }
+    this.tryNumMode=!this.tryNumMode;
+  }
+
+  bySaveDateSort(){
+    if(this.saveDateMode){
+      this.simpleAchievData.sort((a,b) => (a.saveDate==undefined || b.saveDate==undefined) ? 0 : (a.saveDate > b.saveDate) ? 1 : (b.saveDate > a.saveDate) ? -1 : 0);
+    }
+    else{
+      this.simpleAchievData.sort((a,b) => (a.saveDate==undefined || b.saveDate==undefined) ? 0 : (a.saveDate < b.saveDate) ? 1 : (b.saveDate < a.saveDate) ? -1 : 0);
+    }
+    this.saveDateMode=!this.saveDateMode;
+  }
 }

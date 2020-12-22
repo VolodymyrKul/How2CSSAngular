@@ -5,13 +5,15 @@ import { SignupComponent } from '../app/components/signup/signup.component';
 import { OwnachievsComponent } from '../app/components/ownachievs/ownachievs.component';
 import { AnotherachievsComponent } from '../app/components/anotherachievs/anotherachievs.component';
 import { CompareachievsComponent } from '../app/components/compareachievs/compareachievs.component';
+import { AccountComponent } from '../app/components/account/account.component'
 
 const routes: Routes = [
   {path: '', component: SigninComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'ownachievs', component: OwnachievsComponent},
   {path: 'antachievs', component: AnotherachievsComponent},
-  {path: 'compareachievs', component: CompareachievsComponent}
+  {path: 'compareachievs', component: CompareachievsComponent},
+  {path: 'account', component: AccountComponent}
 ];
 
 @NgModule({

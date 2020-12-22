@@ -6,13 +6,13 @@
             <th colspan="3" style="text-align: center;">SearchUser achievements</th>
         </tr>
         <tr>
-            <th>Test title</th>
-            <th>Completed/All</th>
-            <th>Correct/All</th>
-            <th>Current mark</th>
-            <th>Completed/All</th>
-            <th>Correct/All</th>
-            <th>Current mark</th>
+            <th>Test title<span (click)="byTitleSort()" style="float: right; cursor: pointer;"><i [ngClass] = "{'fas' : true, 'fa-caret-down' : !titleMode, 'fa-caret-up' : titleMode, 'fa-2x' : true}"></i></span></th>
+            <th>Completed/All<span (click)="byOwnComCountSort()" style="float: right; cursor: pointer;"><i [ngClass] = "{'fas' : true, 'fa-caret-down' : !ownComCountMode, 'fa-caret-up' : ownComCountMode, 'fa-2x' : true}"></i></span></th>
+            <th>Correct/All<span (click)="byOwnCorCountSort()" style="float: right; cursor: pointer;"><i [ngClass] = "{'fas' : true, 'fa-caret-down' : !ownCorCountMode, 'fa-caret-up' : ownCorCountMode, 'fa-2x' : true}"></i></span></th>
+            <th>Current mark<span (click)="byOwnCurMarkSort()" style="float: right; cursor: pointer;"><i [ngClass] = "{'fas' : true, 'fa-caret-down' : !ownCurMarkMode, 'fa-caret-up' : ownCurMarkMode, 'fa-2x' : true}"></i></span></th>
+            <th>Completed/All<span (click)="byAntComCountSort()" style="float: right; cursor: pointer;"><i [ngClass] = "{'fas' : true, 'fa-caret-down' : !antComCountMode, 'fa-caret-up' : antComCountMode, 'fa-2x' : true}"></i></span></th>
+            <th>Correct/All<span (click)="byAntCorCountSort()" style="float: right; cursor: pointer;"><i [ngClass] = "{'fas' : true, 'fa-caret-down' : !antCorCountMode, 'fa-caret-up' : antCorCountMode, 'fa-2x' : true}"></i></span></th>
+            <th>Current mark<span (click)="byAntCurMarkSort()" style="float: right; cursor: pointer;"><i [ngClass] = "{'fas' : true, 'fa-caret-down' : !antCurMarkMode, 'fa-caret-up' : antCurMarkMode, 'fa-2x' : true}"></i></span></th>
         </tr>
     </thead>
     <tbody>

@@ -10,6 +10,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { OwnachievsComponent } from './components/ownachievs/ownachievs.component';
 import { AnotherachievsComponent } from './components/anotherachievs/anotherachievs.component';
 import { CompareachievsComponent } from './components/compareachievs/compareachievs.component';
+import { AccountComponent } from './components/account/account.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CompareachievsComponent } from './components/compareachievs/compareachi
     SigninComponent,
     OwnachievsComponent,
     AnotherachievsComponent,
-    CompareachievsComponent
+    CompareachievsComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,

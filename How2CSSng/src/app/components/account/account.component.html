@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="btn-group-vertical w-25 mt-5" style="float: left;">
+        <button type="button" class="btn btn-primary">Profile</button>
+        <button type="button" class="btn btn-primary">Open test</button>
+        <button type="button" class="btn btn-primary dropup" (click)="changeachievMode()">
+            Achievements<span style="float: right; cursor: pointer;"><i [ngClass] = "{'fas' : true, 'fa-caret-down' : !achievMode, 'fa-caret-up' : achievMode}"></i></span>
+        </button>
+        <a *ngIf="achievMode" class="btn btn-primary" routerLink="/ownachievs">My achievements</a>
+        <a *ngIf="achievMode" class="btn btn-primary" routerLink="/antachievs">Another user achievements</a>
+        <a *ngIf="achievMode" class="btn btn-primary" routerLink="/compareachievs">Compare achievements</a>
+        <button type="button" class="btn btn-primary">Option 1</button>
+        <button type="button" class="btn btn-primary">Option 2</button>
+        <button type="button" class="btn btn-primary">About</button>
+    </div>
+    <div class="w-50 mt-5" style="float: left;"></div>
+    <div class="w-25 mt-5" style="float: left;">
+        <div class="card mx-auto bg-secondary" style="width:300px; position: relative;">
+          <img class="card-img-top" style="width:300px; height: 400px;" src="https://www.clker.com/cliparts/g/l/R/7/h/u/teamstijl-person-icon-blue.svg" alt="Card image">
+          <div class="card-body">
+              <h4 class="card-title" style="text-align: center;">Name + Surname</h4>
+              <h5 class="card-title" style="text-align: center;">Email</h5>
+              <h5 class="card-title" style="text-align: center;">Phone</h5>
+              <h5 class="card-title" style="text-align: center;">UserRole</h5>
+          </div>
+        </div>
+</div>
