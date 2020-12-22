@@ -23,7 +23,7 @@ export class OwnachievsComponent implements OnInit {
   private userEmail: string = 'ilivocs@gmail.com';
 
   ngOnInit(): void {
-    this.achievementDataService.getOwnAchievs(this.userEmail)
+    this.achievementDataService.getOwnAchievs(localStorage.getItem("currentuser") as string)
     .subscribe((data: DetailAchievData[] | any) => {
       this.detailAchievs = data;
       console.log(this.detailAchievs.length);

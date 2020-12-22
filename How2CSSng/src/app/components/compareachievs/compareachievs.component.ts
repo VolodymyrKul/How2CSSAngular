@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompareAchievData } from '../../models/compare-achiev-data';
 import { AchievementDataServiceService } from '../../services/achievement-data-service.service';
+import { UserServiceService } from '../../services/user-service.service';
 
 @Component({
   selector: 'app-compareachievs',
@@ -16,13 +17,20 @@ export class CompareachievsComponent implements OnInit {
   antComCountMode: boolean = false;
   antCorCountMode: boolean = false;
   antCurMarkMode: boolean = false;
+  searchErrMode: boolean = false;
+  tableMode: boolean = false;
+  searchUserEmail: string = '';
 
-  constructor(private achievementDataService: AchievementDataServiceService) { }
+  constructor(private achievementDataService: AchievementDataServiceService, private userService: UserServiceService) { }
 
-  private userId1: number = 1;
-  private userId2: number = 2;
+  private userId1: string = 'ilivocs@gmail.com';
+  private userId2: string = 'turyanmykh@gmail.com';
 
   ngOnInit(): void {
+    //this.loadComparation();
+  }
+
+  loadComparation(): void {
     this.achievementDataService.compareAchievs(this.userId1, this.userId2)
     .subscribe((data: CompareAchievData[] | any) => {
       this.compareAchievData=data;
@@ -99,5 +107,27 @@ export class CompareachievsComponent implements OnInit {
       this.compareAchievData.sort((a,b) => (a.antCurrentMark==undefined || b.antCurrentMark==undefined) ? 0 : (a.antCurrentMark < b.antCurrentMark) ? 1 : (b.antCurrentMark < a.antCurrentMark) ? -1 : 0);
     }
     this.antCurMarkMode=!this.antCurMarkMode;
+  }
+
+  hideAlert(){
+    this.searchErrMode = false;
+  }
+
+  searchUser(){
+    this.userService.search(this.searchUserEmail)
+    .subscribe((data: boolean | any) => {
+      this.searchErrMode = !data;
+      console.log(this.searchErrMode);
+      if(this.searchErrMode == false){
+        this.userId1 = localStorage.getItem("currentuser") as string;
+        this.userId2 = this.searchUserEmail;
+        this.tableMode = true;
+        this.loadComparation()
+      }
+      else{
+        this.tableMode = false;
+        this.compareAchievData = [];
+      }
+    });
   }
 }

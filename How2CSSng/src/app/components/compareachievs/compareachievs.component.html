@@ -1,3 +1,16 @@
+<form class="w-75 mx-auto mt-4 mb-4">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" (focus)="hideAlert()" name="useremail" [(ngModel)]="searchUserEmail">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" (click)="searchUser()"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="searchErrMode">
+            User did not find!
+          </div>
+    </div>
+</form>
 <table class="table table-striped table-bordered w-75 mx-auto mt-4">
     <thead>
         <tr>
@@ -27,5 +40,14 @@
                 <td>{{achiev?.antCurrentMark}}</td>
             </tr>
         </ng-container>
+        <tr *ngIf="!tableMode">
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
     </tbody>
 </table>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
+import { UserServiceService } from '../../services/user-service.service';
+import { SignInUser } from '../../models/sign-in-user'
 
 @Component({
   selector: 'app-signin',
@@ -7,13 +9,34 @@ import { Router } from '@angular/router'
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
+  isLogged: boolean = true;
+  user: SignInUser = new SignInUser('ilivocs@gmail.com', '_Aa123456');
+  tmp: string = 'tmp1';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UserServiceService) { }
 
   ngOnInit(): void {
   }
 
-  signin(){
-    this.router.navigate(['account']);
+  signin() : void {
+    //console.log(this.user.email);
+    //console.log(this.user.password);
+    this.userService.login(this.user)
+    .subscribe((data: boolean | any) => {
+      this.isLogged=data;
+      console.log(this.isLogged);
+      if(this.isLogged){
+        localStorage.setItem("currentuser", (this.user.email==undefined) ? "undefined" : this.user.email);
+        this.router.navigate(['account']);  
+      }
+      else{
+        this.isLogged = false;
+      }
+    });
+    //this.router.navigate(['account']);
+  }
+
+  hideAlert(){
+    this.isLogged = true;
   }
 }

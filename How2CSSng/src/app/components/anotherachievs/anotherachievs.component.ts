@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SimpleAchievData } from '../../models/simple-achiev-data';
 import { AchievementDataServiceService } from '../../services/achievement-data-service.service';
+import { UserServiceService } from '../../services/user-service.service';
 
 @Component({
   selector: 'app-anotherachievs',
@@ -15,12 +16,19 @@ export class AnotherachievsComponent implements OnInit {
   curMarkMode: boolean = false;
   tryNumMode: boolean = false;
   saveDateMode: boolean = false;
+  searchErrMode: boolean = false;
+  tableMode: boolean = false;
+  searchUserEmail: string = '';
 
-  constructor(private achievementDataService: AchievementDataServiceService) { }
+  constructor(private achievementDataService: AchievementDataServiceService, private userService: UserServiceService) { }
   
   private userEmail: string = 'turyanmykh@gmail.com';
 
   ngOnInit(): void {
+    //this.loadAchievs();
+  }
+
+  loadAchievs(): void{
     this.achievementDataService.getAntAchievs(this.userEmail)
     .subscribe((data: SimpleAchievData[] | any) => {
       this.simpleAchievData=data;
@@ -86,5 +94,26 @@ export class AnotherachievsComponent implements OnInit {
       this.simpleAchievData.sort((a,b) => (a.saveDate==undefined || b.saveDate==undefined) ? 0 : (a.saveDate < b.saveDate) ? 1 : (b.saveDate < a.saveDate) ? -1 : 0);
     }
     this.saveDateMode=!this.saveDateMode;
+  }
+
+  hideAlert(){
+    this.searchErrMode = false;
+  }
+
+  searchUser(){
+    this.userService.search(this.searchUserEmail)
+    .subscribe((data: boolean | any) => {
+      this.searchErrMode = !data;
+      console.log(this.searchErrMode);
+      if(this.searchErrMode == false){
+        this.userEmail = this.searchUserEmail;
+        this.tableMode = true;
+        this.loadAchievs()
+      }
+      else{
+        this.tableMode = false;
+        this.simpleAchievData = [];
+      }
+    });
   }
 }
