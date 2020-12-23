@@ -1,0 +1,26 @@
+<form class="w-50 mx-auto mt-5">
+    <div class="form-group">
+        <div>
+          <input type="email" class="form-control" placeholder="Enter achievement title" id="email" name="achievtitle" [(ngModel)]="saveAchievement.title" (focus)="hideAlerts()">
+        </div>
+    </div>
+    <div class="form-group">
+        <div>
+            <textarea class="form-control" style="height: 150px;" placeholder="Enter achievement notes" id="exampleFormControlTextarea1" name="achievnotes" [(ngModel)]="saveAchievement.notes" (focus)="hideAlerts()"></textarea>
+        </div>
+    </div>
+    <div class="form row">
+        <div class="col">
+            <button type="submit" class="btn btn-primary w-100" (click)="saveAchievFunc()">Save</button>
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-danger w-100" (click)="goBack()">Cancel</button>
+        </div>
+    </div>
+    <div class="alert alert-danger mt-4" role="alert" *ngIf="errMode">
+        Achievement did not save!
+    </div>
+    <div class="alert alert-success mt-4" role="alert" *ngIf="isSaved">
+        Achievement saved success!
+    </div>
+</form>

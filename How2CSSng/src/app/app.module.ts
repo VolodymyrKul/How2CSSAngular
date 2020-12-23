@@ -11,6 +11,7 @@ import { OwnachievsComponent } from './components/ownachievs/ownachievs.componen
 import { AnotherachievsComponent } from './components/anotherachievs/anotherachievs.component';
 import { CompareachievsComponent } from './components/compareachievs/compareachievs.component';
 import { AccountComponent } from './components/account/account.component';
+import { SaveachievComponent } from './components/saveachiev/saveachiev.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AccountComponent } from './components/account/account.component';
     OwnachievsComponent,
     AnotherachievsComponent,
     CompareachievsComponent,
-    AccountComponent
+    AccountComponent,
+    SaveachievComponent
   ],
   imports: [
     BrowserModule,

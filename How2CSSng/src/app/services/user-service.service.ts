@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SignInUser } from '../models/sign-in-user'
+import { SignInUser } from '../models/sign-in-user';
+import { SignUpUser } from '../models/sign-up-user'
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,9 @@ export class UserServiceService {
 
   userinfo(email: string){
     return this.http.get(this.url + '/info/' + email);
+  }
+
+  register(user: SignUpUser){
+    return this.http.post(this.url + '/register', user);
   }
 }

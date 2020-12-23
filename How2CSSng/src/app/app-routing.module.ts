@@ -5,7 +5,8 @@ import { SignupComponent } from '../app/components/signup/signup.component';
 import { OwnachievsComponent } from '../app/components/ownachievs/ownachievs.component';
 import { AnotherachievsComponent } from '../app/components/anotherachievs/anotherachievs.component';
 import { CompareachievsComponent } from '../app/components/compareachievs/compareachievs.component';
-import { AccountComponent } from '../app/components/account/account.component'
+import { AccountComponent } from '../app/components/account/account.component';
+import { SaveachievComponent } from '../app/components/saveachiev/saveachiev.component'
 
 const routes: Routes = [
   {path: '', component: SigninComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'ownachievs', component: OwnachievsComponent},
   {path: 'antachievs', component: AnotherachievsComponent},
   {path: 'compareachievs', component: CompareachievsComponent},
-  {path: 'account', component: AccountComponent}
+  {path: 'account', component: AccountComponent},
+  {path: 'saveachiev', component: SaveachievComponent}
 ];
 
 @NgModule({

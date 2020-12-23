@@ -1,28 +1,34 @@
 <form class="w-50 mx-auto mt-5">
     <div class="form-group">
         <div>
-            <input type="text" class="form-control" placeholder="Enter name" id="name">
+            <input type="text" class="form-control" placeholder="Enter name" id="name" name="username" [(ngModel)]="user.firstName" (focus)="hideAlerts()">
         </div>
     </div>
     <div class="form-group">
         <div>
-            <input type="text" class="form-control" placeholder="Enter surname" id="surname">
+            <input type="text" class="form-control" placeholder="Enter surname" id="surname" name="usersurname" [(ngModel)]="user.lastName" (focus)="hideAlerts()">
         </div>
     </div>
     <div class="form-group">
         <div>
-          <input type="tel" class="form-control" placeholder="Enter phone" id="phone">
+          <input type="tel" class="form-control" placeholder="Enter phone" id="phone" name="userphone" [(ngModel)]="user.phone" (focus)="hideAlerts()">
         </div>
     </div>
     <div class="form-group">
         <div>
-          <input type="email" class="form-control" placeholder="Enter email" id="email">
+          <input type="email" class="form-control" placeholder="Enter email" id="email" name="useremail" [(ngModel)]="user.email" (focus)="hideAlerts()">
         </div>
     </div>
     <div class="form-group">
         <div>
-          <input type="password" class="form-control" placeholder="Enter password" id="pwd">
+          <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="userpass" [(ngModel)]="user.password" (focus)="hideAlerts()">
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" (click)="register()">Submit</button>
+    <div class="alert alert-danger mt-4" role="alert" *ngIf="errMode">
+        User did not register!
+    </div>
+    <div class="alert alert-success mt-4" role="alert" *ngIf="isReg">
+        User registered success!
+    </div>
   </form>
