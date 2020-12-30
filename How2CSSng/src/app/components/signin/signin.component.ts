@@ -10,6 +10,7 @@ import { SignInUser } from '../../models/sign-in-user'
 })
 export class SigninComponent implements OnInit {
   isLogged: boolean = true;
+  isLoading: boolean = false;
   user: SignInUser = new SignInUser('ilivocs@gmail.com', '_Aa123456');
   tmp: string = 'tmp1';
 
@@ -19,12 +20,14 @@ export class SigninComponent implements OnInit {
   }
 
   signin() : void {
+    this.isLoading = true;
     //console.log(this.user.email);
     //console.log(this.user.password);
     this.userService.login(this.user)
     .subscribe((data: boolean | any) => {
       this.isLogged=data;
       console.log(this.isLogged);
+      this.isLoading = false;
       if(this.isLogged){
         localStorage.setItem("currentuser", (this.user.email==undefined) ? "undefined" : this.user.email);
         this.router.navigate(['account']);  
