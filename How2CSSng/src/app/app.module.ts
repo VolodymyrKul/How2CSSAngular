@@ -13,6 +13,7 @@ import { CompareachievsComponent } from './components/compareachievs/compareachi
 import { AccountComponent } from './components/account/account.component';
 import { SaveachievComponent } from './components/saveachiev/saveachiev.component';
 import { LevelexecutionComponent } from './components/levelexecution/levelexecution.component';
+import { TaskComponent } from './components/task/task.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LevelexecutionComponent } from './components/levelexecution/levelexecut
     CompareachievsComponent,
     AccountComponent,
     SaveachievComponent,
-    LevelexecutionComponent
+    LevelexecutionComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,
