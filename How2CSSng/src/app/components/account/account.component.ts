@@ -35,4 +35,7 @@ export class AccountComponent implements OnInit {
   goToSave(){
     this.router.navigate(['saveachiev'], {queryParams : {'comCnt' : this.comCnt, 'corCnt' : this.corCnt, 'curMark' : this.curMark, 'lvlparam' : this.lvlTitle}})
   }
+  createTask(){
+    this.router.navigate(['task'], {queryParams : null})
+  }
 }
