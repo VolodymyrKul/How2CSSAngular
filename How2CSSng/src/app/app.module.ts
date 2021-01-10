@@ -12,6 +12,7 @@ import { AnotherachievsComponent } from './components/anotherachievs/anotherachi
 import { CompareachievsComponent } from './components/compareachievs/compareachievs.component';
 import { AccountComponent } from './components/account/account.component';
 import { SaveachievComponent } from './components/saveachiev/saveachiev.component';
+import { LevelexecutionComponent } from './components/levelexecution/levelexecution.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SaveachievComponent } from './components/saveachiev/saveachiev.componen
     AnotherachievsComponent,
     CompareachievsComponent,
     AccountComponent,
-    SaveachievComponent
+    SaveachievComponent,
+    LevelexecutionComponent
   ],
   imports: [
     BrowserModule,

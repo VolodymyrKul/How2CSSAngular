@@ -6,7 +6,8 @@ import { OwnachievsComponent } from '../app/components/ownachievs/ownachievs.com
 import { AnotherachievsComponent } from '../app/components/anotherachievs/anotherachievs.component';
 import { CompareachievsComponent } from '../app/components/compareachievs/compareachievs.component';
 import { AccountComponent } from '../app/components/account/account.component';
-import { SaveachievComponent } from '../app/components/saveachiev/saveachiev.component'
+import { SaveachievComponent } from '../app/components/saveachiev/saveachiev.component';
+import { LevelexecutionComponent } from '../app/components/levelexecution/levelexecution.component'
 
 const routes: Routes = [
   {path: '', component: SigninComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'antachievs', component: AnotherachievsComponent},
   {path: 'compareachievs', component: CompareachievsComponent},
   {path: 'account', component: AccountComponent},
-  {path: 'saveachiev', component: SaveachievComponent}
+  {path: 'saveachiev', component: SaveachievComponent},
+  {path: 'levelexec', component: LevelexecutionComponent}
 ];
 
 @NgModule({

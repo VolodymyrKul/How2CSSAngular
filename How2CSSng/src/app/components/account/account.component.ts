@@ -35,4 +35,8 @@ export class AccountComponent implements OnInit {
   goToSave(){
     this.router.navigate(['saveachiev'], {queryParams : {'comCnt' : this.comCnt, 'corCnt' : this.corCnt, 'curMark' : this.curMark, 'lvlparam' : this.lvlTitle}})
   }
+
+  goToLevel(){
+    this.router.navigate(['levelexec']);
+  }
 }
