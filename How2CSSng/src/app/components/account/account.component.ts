@@ -38,8 +38,9 @@ export class AccountComponent implements OnInit {
 
   goToLevel(){
     this.router.navigate(['levelexec']);
+  }
     
   createTask(){
-    this.router.navigate(['task'], {queryParams : null})
+    this.router.navigate(['task'], {queryParams : null});
   }
 }

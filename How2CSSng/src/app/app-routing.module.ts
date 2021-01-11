@@ -9,6 +9,7 @@ import { AccountComponent } from '../app/components/account/account.component';
 import { SaveachievComponent } from '../app/components/saveachiev/saveachiev.component';
 import { LevelexecutionComponent } from '../app/components/levelexecution/levelexecution.component';
 import { TaskComponent} from '../app/components/task/task.component';
+import { ChoosetaskComponent } from './components/choosetask/choosetask.component';
 
 const routes: Routes = [
   {path: '', component: SigninComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'account', component: AccountComponent},
   {path: 'saveachiev', component: SaveachievComponent},
   {path: 'levelexec', component: LevelexecutionComponent},
-  {path: 'task', component: TaskComponent}
+  {path: 'task', component: TaskComponent},
+  {path: 'choosetask', component: ChoosetaskComponent}
 ];
 
 @NgModule({

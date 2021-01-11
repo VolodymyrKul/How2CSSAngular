@@ -14,6 +14,8 @@ import { AccountComponent } from './components/account/account.component';
 import { SaveachievComponent } from './components/saveachiev/saveachiev.component';
 import { LevelexecutionComponent } from './components/levelexecution/levelexecution.component';
 import { TaskComponent } from './components/task/task.component';
+import { ChoosetaskComponent } from './components/choosetask/choosetask.component';
+import { DifficultyPipe } from './pipes/difficulty.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { TaskComponent } from './components/task/task.component';
     AccountComponent,
     SaveachievComponent,
     LevelexecutionComponent,
-    TaskComponent
+    TaskComponent,
+    ChoosetaskComponent,
+    DifficultyPipe
   ],
   imports: [
     BrowserModule,
