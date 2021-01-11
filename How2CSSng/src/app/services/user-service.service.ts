@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SignInUser } from '../models/sign-in-user';
-import { SignUpUser } from '../models/sign-up-user'
+import { SignUpUser } from '../models/sign-up-user';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserServiceService {
-  private url = "https://localhost:5001/api/users";
+  private url = `${environment.apiUrl}/api/users`;
 
   constructor(private http: HttpClient) { }
 
