@@ -7,6 +7,7 @@ import { AnotherachievsComponent } from '../app/components/anotherachievs/anothe
 import { CompareachievsComponent } from '../app/components/compareachievs/compareachievs.component';
 import { AccountComponent } from '../app/components/account/account.component';
 import { SaveachievComponent } from '../app/components/saveachiev/saveachiev.component';
+import { LevelexecutionComponent } from '../app/components/levelexecution/levelexecution.component';
 import { TaskComponent} from '../app/components/task/task.component';
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'compareachievs', component: CompareachievsComponent},
   {path: 'account', component: AccountComponent},
   {path: 'saveachiev', component: SaveachievComponent},
+  {path: 'levelexec', component: LevelexecutionComponent},
   {path: 'task', component: TaskComponent}
 ];
 

@@ -12,6 +12,7 @@ import { AnotherachievsComponent } from './components/anotherachievs/anotherachi
 import { CompareachievsComponent } from './components/compareachievs/compareachievs.component';
 import { AccountComponent } from './components/account/account.component';
 import { SaveachievComponent } from './components/saveachiev/saveachiev.component';
+import { LevelexecutionComponent } from './components/levelexecution/levelexecution.component';
 import { TaskComponent } from './components/task/task.component';
 
 @NgModule({
@@ -24,6 +25,7 @@ import { TaskComponent } from './components/task/task.component';
     CompareachievsComponent,
     AccountComponent,
     SaveachievComponent,
+    LevelexecutionComponent,
     TaskComponent
   ],
   imports: [

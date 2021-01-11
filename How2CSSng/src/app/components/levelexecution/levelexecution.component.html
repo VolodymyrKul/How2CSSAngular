@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <p class="mx-auto mt-4">{{levelTitle}}</p>
+    </div>
+    <div class="row mt-4">
+        <ul class="list-group w-100">
+            <li li class="list-group-item" *ngFor="let task of taskExecArr let in = index">
+                <form>
+                    <div class="form-group row">
+                        <label for="useranswer" class="ml-1">{{task?.taskQuestion}}</label>
+                        <textarea class="form-control" id="useranswer" rows="10" name="useranswer" [(ngModel)]="userAnswer"></textarea>
+                        <textarea *ngIf="showAnswerArr[in]" class="form-control mt-1" id="useranswer" rows="10" name="useranswer" [(ngModel)]="userAnswer" readonly></textarea>
+                    </div>
+                    <div class="form-row d-flex justify-content-between">
+                        <button class="btn btn-info w-25">Hint</button>
+                        <button class="btn btn-secondary w-25">Verify</button>
+                        <button class="btn btn-success w-25" (click)="changeAnswerVisible(in)">{{answerBtnTitle}}</button>
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>
