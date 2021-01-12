@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { TaskService } from 'src/app/services/task-service.service';
+import { TaskSecondService } from 'src/app/services/task-second-service.service';
 import { TaskExec } from '../../models/task-exec'
 
 @Component({
@@ -23,7 +23,7 @@ export class LevelexecutionComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private taskService: TaskService
+    private taskService: TaskSecondService
     ) { }
 
   ngOnDestroy(): void {

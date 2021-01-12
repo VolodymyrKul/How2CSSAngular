@@ -5,7 +5,7 @@ import { HttpInternalService } from './http-internal.service';
 @Injectable({
   providedIn: 'root'
 })
-export class TaskService {
+export class TaskSecondService {
   private routePrefix = `/api/csstasks`;
 
   constructor(private httpService: HttpInternalService) {}
