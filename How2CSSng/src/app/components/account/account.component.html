@@ -1,7 +1,7 @@
 <div class="container">
     <div class="btn-group-vertical w-25 mt-5" style="float: left;">
         <button type="button" class="btn btn-primary">Profile</button>
-        <button type="button" class="btn btn-primary">Open test</button>
+        <button type="button" class="btn btn-primary" routerLink="/choosetask">Search task</button>
         <button type="button" class="btn btn-primary" (click)="createTask()">Create task</button>
         <button type="button" class="btn btn-primary dropup" (click)="changeachievMode()">
             Achievements<span style="float: right; cursor: pointer;"><i [ngClass] = "{'fas' : true, 'fa-caret-down' : !achievMode, 'fa-caret-up' : achievMode}"></i></span>

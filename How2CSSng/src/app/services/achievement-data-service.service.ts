@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SaveAchievement } from '../models/save-achievement'
+import { SaveAchievement } from '../models/save-achievement';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AchievementDataServiceService {
-  private url = "https://localhost:5001/api/achievdatas";
+
+  private url = `${environment.apiUrl}/api/achievdatas`;
   
   constructor(private http: HttpClient) { }
 

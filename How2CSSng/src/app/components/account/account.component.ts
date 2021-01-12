@@ -41,6 +41,6 @@ export class AccountComponent implements OnInit {
   }
   
   createTask(){
-    this.router.navigate(['task'], {queryParams : null})
+    this.router.navigate(['task'], {queryParams : null});
   }
 }

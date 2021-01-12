@@ -14,6 +14,12 @@ import { AccountComponent } from './components/account/account.component';
 import { SaveachievComponent } from './components/saveachiev/saveachiev.component';
 import { LevelexecutionComponent } from './components/levelexecution/levelexecution.component';
 import { TaskComponent } from './components/task/task.component';
+import { ChoosetaskComponent } from './components/choosetask/choosetask.component';
+import { DifficultyPipe } from './pipes/difficulty.pipe';
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
+import { UseranswerComponent } from './components/levelexecution/useranswer/useranswer.component';
+import { ExpectedanswerComponent } from './components/levelexecution/expectedanswer/expectedanswer.component';
+
 
 @NgModule({
   declarations: [
@@ -26,13 +32,18 @@ import { TaskComponent } from './components/task/task.component';
     AccountComponent,
     SaveachievComponent,
     LevelexecutionComponent,
-    TaskComponent
+    TaskComponent,
+    ChoosetaskComponent,
+    DifficultyPipe,
+    UseranswerComponent,
+    ExpectedanswerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CodemirrorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
