@@ -1,1 +1,52 @@
-<p>task works!</p>
+<form class="w-50 mx-auto mt-5">
+    <div>
+        <h4>Choose a Unit please:</h4>
+        <select style="width: 100%;"   (change)="selectedM()"
+        [(ngModel)]="selectedUnit" name="selectUnit">
+        <option [ngValue]="itemUnit" *ngFor="let itemUnit of units">{{itemUnit.name}}</option>
+         </select>
+         <p> </p>
+      </div> 
+
+    <div class="form-group">
+        <div>
+            <h4>Enter a qestion please:</h4>
+            <textarea [ngModelOptions]="{standalone: true}" class="form-control" style="height: 150px;" placeholder="Enter a question" id="exampleFormControlTextarea1" name="achievnotes" [(ngModel)]="taskData.questionText"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div>
+            <h4>Enter a html base part please:</h4>
+            <textarea [ngModelOptions]="{standalone: true}" class="form-control" style="height: 150px;" placeholder="Enter a question" id="exampleFormControlTextarea1" name="achievnotes" [(ngModel)]="taskData.questionHtml"></textarea>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div>
+            <h4>Enter an etalone answer please:</h4>
+            <textarea  class="form-control" style="height: 150px;" placeholder="Enter an asnwer" id="exampleFormControlTextarea1" name="achievnotes2" [(ngModel)]="taskData.answer"></textarea>
+        </div>
+    </div>
+    <div>
+        <h4>Choose difficulty</h4>
+        <select [ngModelOptions]="{standalone: true}" (change)="selectedD()"
+        [(ngModel)]="selectedDif" name="selectedDif" style="width: 100%;">
+        <option [ngValue]="item" name="he"  *ngFor="let item of difficulty">{{item.name}}</option>
+         </select>
+         <p> </p>
+      </div> 
+
+    <div class="form row">
+        <div class="col">
+            <button type="submit" class="btn btn-primary w-100" (click)="createTask()">Save</button>
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-danger w-100" >Cancel</button>
+        </div>
+        <p> </p>
+    </div>
+
+    <div class="form row" style="height: 100px;">
+    </div>
+</form>
