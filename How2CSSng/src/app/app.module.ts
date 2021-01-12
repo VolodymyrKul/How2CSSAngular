@@ -16,6 +16,10 @@ import { LevelexecutionComponent } from './components/levelexecution/levelexecut
 import { TaskComponent } from './components/task/task.component';
 import { ChoosetaskComponent } from './components/choosetask/choosetask.component';
 import { DifficultyPipe } from './pipes/difficulty.pipe';
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
+import { UseranswerComponent } from './components/levelexecution/useranswer/useranswer.component';
+import { ExpectedanswerComponent } from './components/levelexecution/expectedanswer/expectedanswer.component';
+
 
 @NgModule({
   declarations: [
@@ -30,13 +34,16 @@ import { DifficultyPipe } from './pipes/difficulty.pipe';
     LevelexecutionComponent,
     TaskComponent,
     ChoosetaskComponent,
-    DifficultyPipe
+    DifficultyPipe,
+    UseranswerComponent,
+    ExpectedanswerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CodemirrorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

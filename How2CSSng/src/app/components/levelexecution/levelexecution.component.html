@@ -1,23 +1,43 @@
-<div class="container">
+<div style="margin: 30px; padding-left: 70px; padding-right: 70px;">
     <div class="row">
-        <p class="mx-auto mt-4">{{levelTitle}}</p>
+        <p class="mx-auto mt-4">{{task?.levelTitle}}</p>
     </div>
-    <div class="row mt-4">
-        <ul class="list-group w-100">
-            <li li class="list-group-item" *ngFor="let task of taskExecArr let in = index">
-                <form>
-                    <div class="form-group row">
-                        <label for="useranswer" class="ml-1">{{task?.taskQuestion}}</label>
-                        <textarea class="form-control" id="useranswer" rows="10" name="useranswer" [(ngModel)]="userAnswer"></textarea>
-                        <textarea *ngIf="showAnswerArr[in]" class="form-control mt-1" id="useranswer" rows="10" name="useranswer" [(ngModel)]="userAnswer" readonly></textarea>
-                    </div>
-                    <div class="form-row d-flex justify-content-between">
-                        <button class="btn btn-info w-25">Hint</button>
-                        <button class="btn btn-secondary w-25">Verify</button>
-                        <button class="btn btn-success w-25" (click)="changeAnswerVisible(in)">{{answerBtnTitle}}</button>
-                    </div>
-                </form>
-            </li>
-        </ul>
+    <p>{{task?.question}}</p>
+    <ngx-codemirror
+        [(ngModel)]="content"
+        [options]="{
+            lineNumbers: true,
+            theme: 'material',
+            mode: 'css'
+        }"
+    ></ngx-codemirror>
+    <ngx-codemirror
+        *ngIf="showAnswer"
+        [(ngModel)]="cssExpectedText"
+        [options]="{
+            lineNumbers: true,
+            mode: 'css',
+            readOnly: 'nocursor'
+        }"
+    ></ngx-codemirror>
+    <div class="form-row d-flex justify-content-between" style="margin: 10px">
+        <button class="btn btn-success w-25" (click)="changeAnswerVisible()">{{answerBtnTitle}}</button>
+        <button class="btn btn-secondary w-25" (click)="run()">Run</button>
+        <button class="btn btn-primary w-25" (click)="complete()">Check Task</button>
+    </div>
+    <div style="display: flex;">
+        <div style="flex: 50%; border: 2px solid #dadce0; border-radius: 8px; margin: 5px; padding: 5px; max-width: 50%;">
+            <div style="text-align: center;">
+                Your result:
+            </div>
+            <app-useranswer  [htmlText]="htmlText" [cssText]="cssUserText"></app-useranswer>
+        </div>
+        <div  style="flex: 50%; border: 2px solid #dadce0; border-radius: 8px; margin: 5px; padding: 5px; max-width: 50%;">
+            <div style="text-align: center;">
+                Expected result:
+            </div>
+            <app-expectedanswer  [htmlText]="htmlText" [cssText]="cssExpectedText"></app-expectedanswer>
+        </div>
     </div>
 </div>
+

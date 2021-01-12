@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { LevelTasks } from 'src/app/models/level-tasks';
@@ -19,7 +20,8 @@ export class ChoosetaskComponent implements OnInit, OnDestroy {
   public difficultyMode = false;
 
   constructor(
-    private levelService: LevelService
+    private levelService: LevelService,
+    private router: Router,
   ) { }
 
   ngOnDestroy(): void {
@@ -106,7 +108,7 @@ export class ChoosetaskComponent implements OnInit, OnDestroy {
   }
 
   chooseTask(id?: number){
-    //TODO
+    this.router.navigate([`levelexec/${id}`]);
   }
 
 }
