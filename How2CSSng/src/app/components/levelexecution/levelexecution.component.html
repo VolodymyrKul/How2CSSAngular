@@ -2,7 +2,9 @@
     <div class="row">
         <p class="mx-auto mt-4">{{task?.levelTitle}}</p>
     </div>
-    <p>{{task?.question}}</p>
+    <p>{{task?.question}}
+        {{task?.htmlText}}
+    </p>
     <ngx-codemirror
         [(ngModel)]="content"
         [options]="{

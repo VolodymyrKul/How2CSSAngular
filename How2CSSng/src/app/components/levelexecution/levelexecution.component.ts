@@ -49,11 +49,9 @@ export class LevelexecutionComponent implements OnInit, OnDestroy {
           this.task = resp.body;
           if(this.task){
             this.cssExpectedText = this.task.answer;
-            var start = this.task.question.indexOf("<");
-            var end = this.task.question.lastIndexOf(">");
-            var length = end - start;
-            if(length > 0)
-              this.htmlText = this.task.question.substr(start, length);
+            this.htmlText = this.task.htmlText;
+            
+              console.log(this.htmlText);
           }
 
         },
@@ -75,7 +73,6 @@ export class LevelexecutionComponent implements OnInit, OnDestroy {
 
   run(){
     this.cssUserText = this.content;
-    console.log(this.content)
   }
 
   complete(){

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-expectedanswer',
@@ -27,4 +27,16 @@ export class ExpectedanswerComponent implements OnInit {
       this.doc?.head.append(styleEl);
     }
   }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if(this.doc)
+      this.doc.body.innerHTML = this.htmlText;
+
+    var styleEl = this.doc?.getElementById('style');
+    if(styleEl){
+      styleEl.innerHTML = this.cssText;
+    }
+  }
+
+
 }

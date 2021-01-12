@@ -29,10 +29,12 @@ export class UseranswerComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    if(this.doc)
+      this.doc.body.innerHTML = this.htmlText;
+
     var styleEl = this.doc?.getElementById('style');
     if(styleEl){
       styleEl.innerHTML = this.cssText;
     }
-    //this.computedAnswerStyle = window.getComputedStyle(this.bodyElem.firstElementChild)
   }
 }

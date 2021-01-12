@@ -66,6 +66,7 @@ export class TaskComponent implements OnInit {
     this.taskService.createTask(new TaskTransport(this.questionId,this.answerId,this.metadataId,+this.selectedDif.id))
     .subscribe(result => { 
       console.log("DONE!");
+      console.log(result);
     })
   }
   delay(ms: number) {
