@@ -33,14 +33,5 @@ export class TaskServiceService {
   }
   createTask(task:TaskTransport){
     return this.http.post(this.url + '/csstasks',task);
-
-export class TaskService {
-  private routePrefix = `/api/csstasks`;
-
-  constructor(private httpService: HttpInternalService) {}
-
-  public getTaskExec(id: number){
-    return this.httpService.getFullRequest<TaskExec>(`${this.routePrefix}/exec/${id}`);
-
   }
 }
