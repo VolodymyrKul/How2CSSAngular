@@ -29,7 +29,7 @@
                     </thead>
                     <tbody>
                         <ng-container *ngFor="let taskDist of level?.taskDistributions">
-                            <tr (click)="chooseTask(taskDist?.task?.id)">
+                            <tr (click)="chooseTask(taskDist?.task?.id)" style="cursor: pointer;">
                                 <th>{{taskDist?.taskOrder}}</th>
                                 <th>{{taskDist?.task?.taskDifficulty | stringDifficulty}}</th>
                                 <th>{{taskDist?.task?.attemptsCount}}</th>

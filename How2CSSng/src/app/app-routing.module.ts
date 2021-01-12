@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'compareachievs', component: CompareachievsComponent},
   {path: 'account', component: AccountComponent},
   {path: 'saveachiev', component: SaveachievComponent},
-  {path: 'levelexec', component: LevelexecutionComponent},
+  {path: 'levelexec/:id', component: LevelexecutionComponent},
   {path: 'task', component: TaskComponent},
   {path: 'choosetask', component: ChoosetaskComponent}
 ];

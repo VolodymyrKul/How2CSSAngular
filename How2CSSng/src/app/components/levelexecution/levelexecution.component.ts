@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { TaskService } from 'src/app/services/task-service.service';
 import { TaskExec } from '../../models/task-exec'
 
 @Component({
@@ -6,28 +10,75 @@ import { TaskExec } from '../../models/task-exec'
   templateUrl: './levelexecution.component.html',
   styleUrls: ['./levelexecution.component.css']
 })
-export class LevelexecutionComponent implements OnInit {
-  taskExecArr: TaskExec[] = [];
-  showAnswerArr: boolean[] = [];
-  levelTitle: string = 'CSS_Level1';
-  userAnswer: string = 'User answer text';
-  answerBtnTitle: string = 'Show answer';
+export class LevelexecutionComponent implements OnInit, OnDestroy {
+  task: TaskExec | null = null;
+  showAnswer: boolean = false;
+  private unsubscribe$ = new Subject<void>();
 
-  constructor() { }
+  answerBtnTitle: string = 'Show answer';
+  content: string = "";
+  htmlText = "";
+  cssUserText = "";
+  cssExpectedText = '';
+
+  constructor(
+    private route: ActivatedRoute,
+    private taskService: TaskService
+    ) { }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
 
   ngOnInit(): void {
-    for(let i=0;i<15;i++){
-      this.taskExecArr.push(new TaskExec('Here must be a task question', 'CSS'));
-      this.showAnswerArr.push(false);
-    }
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+            const id: string = params[`id`];
+            this.getTask(+id);
+        }
+      );
   }
-  changeAnswerVisible(index: number){
-    this.showAnswerArr[index] = !this.showAnswerArr[index];
-    if(this.showAnswerArr[index] === true){
+  getTask(id: number) {
+    this.taskService
+      .getTaskExec(id)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(
+        (resp) => {
+          this.task = resp.body;
+          if(this.task){
+            this.cssExpectedText = this.task.answer;
+            var start = this.task.question.indexOf("<");
+            var end = this.task.question.lastIndexOf(">");
+            var length = end - start;
+            if(length > 0)
+              this.htmlText = this.task.question.substr(start, length);
+          }
+
+        },
+        (error) => {
+          console.error(error);
+        }
+      )
+  }
+
+  changeAnswerVisible(){
+    this.showAnswer = !this.showAnswer;
+    if(this.showAnswer === true){
       this.answerBtnTitle = 'Hide answer';
     }
     else{
       this.answerBtnTitle = 'Show answer';
     }
+  }
+
+  run(){
+    this.cssUserText = this.content;
+    console.log(this.content)
+  }
+
+  complete(){
+    //TODO
   }
 }

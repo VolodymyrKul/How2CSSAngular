@@ -1,6 +1,6 @@
-export class TaskExec {
-    constructor(
-        public taskQuestion: string,
-        public taskAnswer: string
-    ){ }
+export interface TaskExec {
+    id: number;
+    question: string;
+    answer: string;
+    levelTitle: string;
 }

@@ -1,12 +1,16 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { TaskExec } from '../models/task-exec';
+import { HttpInternalService } from './http-internal.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TaskServiceService {
-  private url = `${environment.apiUrl}/api/csstasks`;
+export class TaskService {
+  private routePrefix = `/api/csstasks`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private httpService: HttpInternalService) {}
+
+  public getTaskExec(id: number){
+    return this.httpService.getFullRequest<TaskExec>(`${this.routePrefix}/exec/${id}`);
+  }
 }
