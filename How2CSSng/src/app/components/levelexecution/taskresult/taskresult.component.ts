@@ -10,7 +10,8 @@ export interface TaskResultInfo {
   taskResultUpdate: TaskResultUpdate,
   percentage: number,
   timeFine: number,
-  durationStr: string
+  durationStr: string,
+  isSolutionOpened: boolean
 }
 
 @Component({
@@ -24,6 +25,7 @@ export class TaskresultComponent extends SimpleModalComponent<TaskResultInfo, bo
   percentage: number = 0;
   timeFine: number = 0;
   durationStr: string = '';
+  isSolutionOpened: boolean = false;
 
   private unsubscribe$ = new Subject<void>();
 

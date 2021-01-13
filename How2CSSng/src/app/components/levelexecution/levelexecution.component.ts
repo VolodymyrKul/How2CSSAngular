@@ -24,7 +24,7 @@ export class LevelexecutionComponent implements OnInit, OnDestroy {
   showAnswer: boolean = false;
   private unsubscribe$ = new Subject<void>();
 
-  answerBtnTitle: string = 'Show answer';
+  answerBtnTitle: string = 'Show solution';
   content: string = "";
   htmlText = "";
   cssUserText = "";
@@ -32,6 +32,8 @@ export class LevelexecutionComponent implements OnInit, OnDestroy {
   timerFuncId: any;
   duration = 0;
   durationStr = "";
+
+  isSolutionOpened = false;
 
   @ViewChild(UseranswerComponent) userAnswerComponent?: UseranswerComponent;
   @ViewChild(ExpectedanswerComponent) expectedAnswerComponent?: ExpectedanswerComponent;
@@ -105,12 +107,13 @@ export class LevelexecutionComponent implements OnInit, OnDestroy {
   }
 
   changeAnswerVisible(){
+    this.isSolutionOpened = true;
     this.showAnswer = !this.showAnswer;
     if(this.showAnswer === true){
-      this.answerBtnTitle = 'Hide answer';
+      this.answerBtnTitle = 'Hide solution';
     }
     else{
-      this.answerBtnTitle = 'Show answer';
+      this.answerBtnTitle = 'Show solution';
     }
   }
 
@@ -123,6 +126,7 @@ export class LevelexecutionComponent implements OnInit, OnDestroy {
     clearInterval(this.timerFuncId);
     var matchesCount = 0;
     if(this.expectedAnswerComponent?.changedStyles && this.userAnswerComponent?.changedStyles){
+      console.log(this.expectedAnswerComponent.diffKeys);
       for(var i = 0; i < this.expectedAnswerComponent.changedStyles.length; i++){
         for(var j = 0; j < this.expectedAnswerComponent.diffKeys[i].length; j++){
           var key = this.expectedAnswerComponent.diffKeys[i][j];
@@ -146,7 +150,7 @@ export class LevelexecutionComponent implements OnInit, OnDestroy {
     if(timeFine < 0)
       timeFine = 0;
     var score = percentage - timeFine;
-    if(score < 0)
+    if(score < 0 || this.isSolutionOpened)
       score = 0;
     
     console.log(`${percentage} %`);
@@ -163,7 +167,8 @@ export class LevelexecutionComponent implements OnInit, OnDestroy {
         taskResultUpdate: taskResultUpdate,
         percentage: percentage,
         timeFine: timeFine,
-        durationStr: this.durationStr
+        durationStr: this.durationStr,
+        isSolutionOpened: this.isSolutionOpened
       } as TaskResultInfo
       this.simpleModalService
         .addModal(TaskresultComponent, taskUpdateInfo)

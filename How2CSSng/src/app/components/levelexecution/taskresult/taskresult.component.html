@@ -15,6 +15,9 @@
         <label>Time forfeit:</label>
         <label>{{timeFine}}</label>
       </div>
+      <div *ngIf="isSolutionOpened" style="margin-left: 15px; margin-right: 15px;">
+          You've opened solution.
+      </div>
       <div class="row d-flex justify-content-between" style="margin-left: 15px; margin-right: 15px;">
         <label>Score:</label>
         <label>{{taskResult?.score}}</label>
