@@ -8,13 +8,14 @@ import {MetadataDataMy} from '../models/taskModels/metadata-data'
 import { TaskTransport } from '../models/taskModels/task-transport';
 import { TaskExec } from '../models/task-exec';
 import { HttpInternalService } from './http-internal.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class TaskServiceService {
-  private url = "https://localhost:5001/api";
+  private url = `${environment.apiUrl}/api`;
 
   constructor(private http: HttpClient) { }
   

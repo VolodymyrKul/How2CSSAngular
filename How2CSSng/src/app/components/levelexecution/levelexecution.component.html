@@ -2,7 +2,10 @@
     <div class="row">
         <p class="mx-auto mt-4">{{task?.levelTitle}}</p>
     </div>
-    <p>{{task?.question}}</p>
+    <div class="row d-flex justify-content-between">
+        <p>{{task?.question}}  {{task?.htmlText}}</p>
+        <p>Time spent: {{durationStr}}</p>
+    </div>  
     <ngx-codemirror
         [(ngModel)]="content"
         [options]="{
@@ -40,4 +43,3 @@
         </div>
     </div>
 </div>
-
