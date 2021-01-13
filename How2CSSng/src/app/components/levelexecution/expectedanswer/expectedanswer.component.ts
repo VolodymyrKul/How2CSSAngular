@@ -86,7 +86,7 @@ export class ExpectedanswerComponent implements OnInit {
 
   calculateDiffKeys(){
     this.diffKeys = [];
-
+    this.diffCount = 0;
     for(var i = 0; i < this.changedStyles.length; i++){
       var keys: any[] = [];
       Object.keys(this.changedStyles[i]).forEach(key => {
