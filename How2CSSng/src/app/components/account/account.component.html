@@ -2,7 +2,18 @@
     <div class="btn-group-vertical w-25 mt-5" style="float: left;">
         <button type="button" class="btn btn-primary">Profile</button>
         <button type="button" class="btn btn-primary" routerLink="/choosetask">Choose Level</button>
-        <button type="button" class="btn btn-primary" (click)="createTask()">Create task</button>
+        <button *ngIf="isAdmin" type="button" class="btn btn-primary" (click)="createTask()">Create task</button>
+        <button *ngIf="isAdmin" type="button" class="btn btn-primary" (click)="generateLvl()">Generate level
+            <span style="float: right; cursor: pointer;"><i [ngClass] = "{'fas' : true, 'fa-caret-down' : !isGenerating, 'fa-caret-up' : isGenerating}"></i></span>
+        </button>
+        <div *ngIf="isGenerating" style="width: 80%; background: lightblue; margin-left: 10%; margin-right: 10%; display: grid; justify-content: center; padding: 10px;">
+            <h4 style="margin-bottom: 10px; margin-top: 10px;">Choose difficulty</h4>
+            <select [ngModelOptions]="{standalone: true}" style="margin-bottom: 10px;"
+                [(ngModel)]="selectedDif">
+                <option [ngValue]="item" *ngFor="let item of difficulty">{{item.name}}</option>
+            </select>
+            <button type="button" class="btn btn-primary dropup" (click)="generateSubmit()" style="margin-bottom: 10px;">Submit</button>
+        </div>
         <button type="button" class="btn btn-primary dropup" (click)="changeachievMode()">
             Achievements<span style="float: right; cursor: pointer;"><i [ngClass] = "{'fas' : true, 'fa-caret-down' : !achievMode, 'fa-caret-up' : achievMode}"></i></span>
         </button>
