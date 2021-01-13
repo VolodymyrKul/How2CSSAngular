@@ -3,6 +3,7 @@ import { UserServiceService } from '../../services/user-service.service';
 import { ProfileUser } from '../../models/profile-user'
 import { stringify } from '@angular/compiler/src/util';
 import { Router } from '@angular/router';
+import { LevelService } from 'src/app/services/level-service.service';
 
 @Component({
   selector: 'app-account',
@@ -16,14 +17,30 @@ export class AccountComponent implements OnInit {
   comCnt: number = 24;
   corCnt: number = 21;
   curMark: number = 39;
+  isAdmin = false;
+  isGenerating = false;
 
-  constructor(private userService: UserServiceService, private router: Router) { }
+  difficulty: any[] = [
+    { id: 1, name: 'easy' },
+    { id: 2, name: 'medium' },
+    { id: 3, name: 'hard' },
+  ];
+
+  selectedDif = {id: 1, name: 'easy'};
+
+  constructor(private userService: UserServiceService, private router: Router, private levelService: LevelService) { }
 
   ngOnInit(): void {
     console.log(localStorage.getItem("currentuser"));
     this.userService.userinfo(localStorage.getItem("currentuser") as string)
     .subscribe((data: ProfileUser) => {
       this.profileUser = data;
+      if(this.profileUser.role == "Admin"){
+        this.isAdmin = true;
+      }
+      else{
+        this.isAdmin = true;
+      }
       console.log(this.profileUser.role);
     })
   }
@@ -42,5 +59,15 @@ export class AccountComponent implements OnInit {
   
   createTask(){
     this.router.navigate(['task'], {queryParams : null});
+  }
+
+  generateLvl(){
+    this.isGenerating = !this.isGenerating;
+  }
+
+  generateSubmit(){
+    this.levelService
+      .generateLevels(+this.selectedDif.id)
+      .subscribe((resp) => (console.log(resp)));
   }
 }
