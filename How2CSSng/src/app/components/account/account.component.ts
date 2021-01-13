@@ -35,11 +35,11 @@ export class AccountComponent implements OnInit {
     this.userService.userinfo(localStorage.getItem("currentuser") as string)
     .subscribe((data: ProfileUser) => {
       this.profileUser = data;
-      if(this.profileUser.role == "Admin"){
+      if(this.profileUser.role == "Admin" || this.profileUser.role == "admin"){
         this.isAdmin = true;
       }
       else{
-        this.isAdmin = true;
+        this.isAdmin = false;
       }
       console.log(this.profileUser.role);
     })
