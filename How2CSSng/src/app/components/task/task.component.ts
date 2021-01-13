@@ -12,6 +12,7 @@ import { MetadataDataMy } from 'src/app/models/taskModels/metadata-data';
 import { MetadataResponce } from 'src/app/models/taskModels/metadata-answer';
 import { unitResponse } from 'src/app/models/taskModels/unitResponse';
 import { isNgTemplate } from '@angular/compiler';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-task',
@@ -47,9 +48,8 @@ export class TaskComponent implements OnInit {
       var rez = data as questionResponse[]
       this.units = rez;
     })
- 
   }
- 
+
   selectedM(){
     console.log("changed, new value ="+this.selectedUnit.id)
   }
@@ -58,39 +58,33 @@ export class TaskComponent implements OnInit {
     console.log("changed dif, new value ="+this.selectedDif.id)
   }
   async createTask(){
-    this.createQuestion();
-    this.createAnswer();
-    this.createMetadata();
-    await this.delay(500);
-    console.log("TaskTransport("+this.questionId+","+this.answerId+","+ this.metadataId+","+this.selectedDif.id+")");
-    this.taskService.createTask(new TaskTransport(this.questionId,this.answerId,this.metadataId,+this.selectedDif.id))
-    .subscribe(result => { 
-      console.log("DONE!");
-      console.log(result);
+    forkJoin(this.createQuestion(), this.createAnswer(), this.createMetadata()).subscribe((res: any[])=>{
+      this.taskService.createTask(new TaskTransport(res[0].id,res[1].id,res[2].id,+this.selectedDif.id))
+      .subscribe(result =>{
+        confirm(`Task created`);
+        if(confirm("Task Created")){
+          this.router.navigate(['account']);
+        }
+      })
     })
   }
+
   delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
 }
-  createMetadata():void{
-    this.taskService.createMetadata(new MetadataDataMy(this.selectedUnit?.id))
-    .subscribe(result => { 
-      this.metadataId = (result as MetadataResponce).id;
-      console.log("Created metadata ID:"+this.answerId); });
+  createMetadata(){
+    return this.taskService.createMetadata(new MetadataDataMy(this.selectedUnit?.id))
   }
 
-  createQuestion():void{
-    this.taskService.createQuestion(new QuestionData(this.taskData.questionText, this.taskData.questionHtml))
-    .subscribe(result => {  
-      this.questionId = (result as questionResponse).id;
-      console.log("Created question ID:"+(result as questionResponse).id); });
+  createQuestion(){
+    return this.taskService.createQuestion(new QuestionData(this.taskData.questionText, this.taskData.questionHtml))
   }
 
-  createAnswer():void{
-    this.taskService.createAnswer(new AnswerData(this.taskData.answer))
-    .subscribe(result => { 
-      this.answerId = (result as AnswerResponce).id;
-      console.log("Created answer ID:"+this.answerId); });
+  createAnswer(){
+    return this.taskService.createAnswer(new AnswerData(this.taskData.answer))
   }
 
+  cancel(){
+    this.router.navigate(['account']);
+  }
 }

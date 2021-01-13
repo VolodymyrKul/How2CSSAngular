@@ -14,7 +14,7 @@
 <table class="table table-striped table-bordered w-75 mx-auto mt-4">
     <thead>
         <tr>
-            <th>Test title<span (click)="byTitleSort()" style="float: right; cursor: pointer;"><i [ngClass] = "{'fas' : true, 'fa-caret-down' : !titleMode, 'fa-caret-up' : titleMode, 'fa-2x' : true}"></i></span></th>
+            <th>Level title<span (click)="byTitleSort()" style="float: right; cursor: pointer;"><i [ngClass] = "{'fas' : true, 'fa-caret-down' : !titleMode, 'fa-caret-up' : titleMode, 'fa-2x' : true}"></i></span></th>
             <th>Completed/All<span (click)="byComCountSort()" style="float: right; cursor: pointer;"><i [ngClass] = "{'fas' : true, 'fa-caret-down' : !comCountMode, 'fa-caret-up' : comCountMode, 'fa-2x' : true}"></i></span></th>
             <th>Correct/All<span (click)="byCorCountSort()" style="float: right; cursor: pointer;"><i [ngClass] = "{'fas' : true, 'fa-caret-down' : !corCountMode, 'fa-caret-up' : corCountMode, 'fa-2x' : true}"></i></span></th>
             <th>Current mark<span (click)="byCurMarkSort()" style="float: right; cursor: pointer;"><i [ngClass] = "{'fas' : true, 'fa-caret-down' : !curMarkMode, 'fa-caret-up' : curMarkMode, 'fa-2x' : true}"></i></span></th>

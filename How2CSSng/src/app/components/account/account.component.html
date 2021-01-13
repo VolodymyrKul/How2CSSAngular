@@ -1,7 +1,7 @@
 <div class="container">
     <div class="btn-group-vertical w-25 mt-5" style="float: left;">
         <button type="button" class="btn btn-primary">Profile</button>
-        <button type="button" class="btn btn-primary" routerLink="/choosetask">Search task</button>
+        <button type="button" class="btn btn-primary" routerLink="/choosetask">Choose Level</button>
         <button type="button" class="btn btn-primary" (click)="createTask()">Create task</button>
         <button type="button" class="btn btn-primary dropup" (click)="changeachievMode()">
             Achievements<span style="float: right; cursor: pointer;"><i [ngClass] = "{'fas' : true, 'fa-caret-down' : !achievMode, 'fa-caret-up' : achievMode}"></i></span>
@@ -9,9 +9,7 @@
         <a *ngIf="achievMode" class="btn btn-primary" routerLink="/ownachievs">My achievements</a>
         <a *ngIf="achievMode" class="btn btn-primary" routerLink="/antachievs">Another user achievements</a>
         <a *ngIf="achievMode" class="btn btn-primary" routerLink="/compareachievs">Compare achievements</a>
-        <button type="button" class="btn btn-primary">Option 1</button>
         <button type="button" class="btn btn-primary" (click)="goToSave()">Save achivement</button>
-        <button type="button" class="btn btn-primary" (click)="goToLevel()">About</button>
     </div>
     <div class="w-50 mt-5" style="float: left;"></div>
     <div class="w-25 mt-5" style="float: left;">
