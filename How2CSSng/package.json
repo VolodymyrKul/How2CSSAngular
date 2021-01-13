@@ -21,6 +21,7 @@
     "@angular/router": "~11.0.5",
     "@ctrl/ngx-codemirror": "^4.1.0",
     "codemirror": "^5.59.1",
+    "ngx-simple-modal": "^1.4.14",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

@@ -12,6 +12,8 @@ export class UseranswerComponent implements OnInit {
   public doc: Document | undefined;
   public computedAnswerStyle: any = undefined;
 
+  changedStyles: CSSStyleDeclaration[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -36,5 +38,30 @@ export class UseranswerComponent implements OnInit {
     if(styleEl){
       styleEl.innerHTML = this.cssText;
     }
+
+    if(this.doc){
+      this.changedStyles = [];
+      this.addElementChildrenStyles(this.doc.body, this.changedStyles);
+    }
+  }
+
+  addElementChildrenStyles(elem: Element, styles: CSSStyleDeclaration[]){
+    if(elem.childElementCount == 0)
+      return;
+    var children = elem.children
+    if(children){
+      for(var i = 0; i < children.length; i++){
+        var element = children.item(i);
+        if(element){
+          var style = window.getComputedStyle(element);
+          styles.push(this.copy(style) as CSSStyleDeclaration);
+          this.addElementChildrenStyles(element, styles);
+        }
+      }
+    }
+  }
+
+  copy(src: any) {
+    return Object.assign({}, src);
   }
 }
