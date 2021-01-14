@@ -177,7 +177,7 @@ export class LevelexecutionComponent implements OnInit, OnDestroy {
             location.reload();
           }
           else{
-            this.router.navigate([`choosetask`]);
+            this.router.navigate([`saveachiev`]);
           }
         })
     }
