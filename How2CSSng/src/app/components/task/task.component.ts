@@ -61,7 +61,6 @@ export class TaskComponent implements OnInit {
     forkJoin(this.createQuestion(), this.createAnswer(), this.createMetadata()).subscribe((res: any[])=>{
       this.taskService.createTask(new TaskTransport(res[0].id,res[1].id,res[2].id,+this.selectedDif.id))
       .subscribe(result =>{
-        confirm(`Task created`);
         if(confirm("Task Created")){
           this.router.navigate(['account']);
         }

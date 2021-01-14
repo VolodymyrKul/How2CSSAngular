@@ -68,6 +68,6 @@ export class AccountComponent implements OnInit {
   generateSubmit(){
     this.levelService
       .generateLevels(+this.selectedDif.id)
-      .subscribe((resp) => (console.log(resp)));
+      .subscribe((resp) => (confirm("Level Created!")));
   }
 }
