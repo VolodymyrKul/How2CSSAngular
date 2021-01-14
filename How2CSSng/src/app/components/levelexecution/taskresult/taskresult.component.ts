@@ -29,7 +29,7 @@ export class TaskresultComponent extends SimpleModalComponent<TaskResultInfo, bo
 
   private unsubscribe$ = new Subject<void>();
 
-  constructor(private taskResultService: TaskResultService,) { 
+  constructor(private taskResultService: TaskResultService) { 
     super();
   }
 
@@ -62,4 +62,7 @@ export class TaskresultComponent extends SimpleModalComponent<TaskResultInfo, bo
     this.close();
   }
 
+  confirm(){
+    this.close();
+  }
 }
